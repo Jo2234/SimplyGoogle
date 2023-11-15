@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimplyGoogle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .search-box {
+            border: 1px solid #dfe1e5;
+            border-radius: 24px;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            width: 480px;
+            height: 44px;
+            box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+            font-size: 16px;
+        }
+        .search-button {
+            background-color: #f8f9fa;
+            border: 1px solid #f8f9fa;
+            border-radius: 4px;
+            padding: 11px 16px;
+            margin: 11px 4px;
+            font-size: 14px;
+            color: #3c4043;
+            cursor: pointer;
+            user-select: none;
+        }
+        .search-button:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+            background-color: #f0f0f0;
+            border-color: #f0f0f0;
+        }
+        .results {
+            margin-top: 20px;
+            width: 600px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(32,33,36,0.28);
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <img src="{{ url_for('static', filename='SimplyGoogleLogo.png') }}" alt="SimplyGoogle Logo" style="width: 200px; height: auto; margin-bottom: 20px;">
+
+        <form action="/search" method="post">
+            <input type="text" name="query" class="search-box" placeholder="Enter your query" required>
+            <button type="submit" class="search-button">Search</button>
+        </form>
+        {% if results %}
+            <div class="results">
+                <p>{{ results }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
